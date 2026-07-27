@@ -23,3 +23,19 @@ jobs:
 
       - name: Verify Identity
         run: aws sts get-caller-identity
+      - name: Install kubectl
+        run: |
+          set -e
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+      - name: Update kubeconfig for EKS
+        env:
+          AWS_REGION: ${{ vars.AWS_REGION }}
+        run: |
+          aws eks update-kubeconfig --name food-delivery-cluster --region ${AWS_REGION}
+
+      - name: Verify kubectl access
+        run: |
+          kubectl version --client=true
+          kubectl get nodes --no-headers || kubectl get namespaces
