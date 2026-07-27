@@ -12,11 +12,6 @@ output "aws_account_id" {
   value       = data.aws_caller_identity.current.account_id
 }
 
-output "github_actions_role_arn" {
-  description = "IAM Role ARN for GitHub Actions (set as AWS_ROLE_ARN in GitHub Vars)"
-  value       = data.aws_iam_role.github_actions.arn
-}
-
 output "ecr_registry" {
   description = "ECR Registry URL"
   value       = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com"
@@ -97,7 +92,6 @@ output "github_variables_summary" {
     ├─────────────────────────────────────────────────────────────────┤
     │                                                                   │
     │  AWS_ACCOUNT_ID   = ${data.aws_caller_identity.current.account_id}
-    │  AWS_ROLE_ARN     = ${data.aws_iam_role.github_actions.arn}
     │  AWS_REGION       = ${var.aws_region}
     │  EKS_CLUSTER_NAME = ${aws_eks_cluster.main.name}
     │  APP_URL          = <your-app-domain-or-load-balancer-url>

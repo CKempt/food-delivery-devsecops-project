@@ -37,7 +37,6 @@ on:
 
 permissions:
   contents: read
-  id-token: write
   pull-requests: write
 
 concurrency:
@@ -552,7 +551,7 @@ jobs:
             echo "**What remains (costs \$0):**"
             echo "- S3 bucket (terraform state)"
             echo "- DynamoDB table (state lock)"
-            echo "- IAM Role + OIDC Provider"
+            echo "- IAM Role + OIDC Provider (deleted / no longer used)"
             echo "- ACM Certificate"
             echo "- Route53 Hosted Zone (\$0.50/month)"
             echo ""

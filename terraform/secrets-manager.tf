@@ -85,7 +85,7 @@ resource "aws_secretsmanager_secret_version" "database" {
 }
 
 # ─────────────────────────────────────────────────────────────────
-# GitHub Actions Pipeline Secrets (read by pipeline via OIDC)
+# GitHub Actions Pipeline Secrets (read by pipeline using AWS credentials)
 # ─────────────────────────────────────────────────────────────────
 resource "aws_secretsmanager_secret" "pipeline" {
   name                    = "food-delivery/pipeline"
