@@ -63,7 +63,7 @@ jobs:
         working-directory: ${{ env.TF_WORKING_DIR }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -113,7 +113,7 @@ jobs:
         working-directory: ${{ env.TF_WORKING_DIR }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
